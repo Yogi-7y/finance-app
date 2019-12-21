@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/line_graph"
+        android:icon="@drawable/ic_insert_chart_black_24dp"
+        android:title="@string/graph" />
+
+    <item
+        android:id="@+id/tools"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/tools" />
+
+    <item
+        android:id="@+id/track_expense"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="@string/expenses" />
+
+    <item
+        android:id="@+id/blogs"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:title="@string/blogs" />
+
+    <item
+        android:id="@+id/expenses_list"
+        android:icon="@drawable/transaction"
+        android:title="@string/all_expenses" />
+
+
+</menu>

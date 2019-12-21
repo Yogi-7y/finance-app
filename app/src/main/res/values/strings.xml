@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Finance App</string>
+    <string name="graph">Graph</string>
+    <string name="tools">Tools</string>
+    <string name="expenses">Expenses</string>
+    <string name="blogs">Blogs</string>
+    <string name="all_expenses">All Expenses</string>
 </resources>
