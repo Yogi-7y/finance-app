@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal" >-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/blog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/card_view"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingRight="8dp"
+            android:textSize="20sp"
+            tools:text="Psychologist Explain How To Stop Overthinking Everything" />
+
+        <TextView
+            android:id="@+id/blog_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/blog_title"
+            android:fontFamily="@font/roboto_light"
+            android:paddingBottom="8dp"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="John" />
+
+        <TextView
+            android:id="@+id/mid_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/blog_title"
+            android:layout_toRightOf="@id/blog_username"
+            android:paddingHorizontal="6dp"
+            android:text="@string/mid_dot"
+             />
+
+        <TextView
+            android:id="@+id/blog_time_stamp_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/blog_title"
+            android:layout_toRightOf="@id/mid_dot"
+            android:fontFamily="@font/roboto_light"
+            android:paddingBottom="8dp"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="10 minutes ago" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/blog_time_stamp_list"
+                android:layout_marginRight="40dp"
+                android:layout_toLeftOf="@id/card_view"
+                android:alpha="0.2"
+                android:background="@android:color/darker_gray" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:id="@+id/blog_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pic" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </RelativeLayout>
+
+
+    <!--    </LinearLayout>-->
+
+
+</LinearLayout>

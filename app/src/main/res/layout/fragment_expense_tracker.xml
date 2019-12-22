@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/expense_manager_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_black"
+        android:padding="8dp"
+        android:text="@string/expense_manager"
+        android:textSize="24sp" />
+
+    <View
+        android:id="@+id/expense_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/expense_manager_title"
+        android:layout_marginVertical="6dp"
+        android:alpha="0.8"
+        android:background="@android:color/darker_gray" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/expense_manager_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Button"
+        android:background="@color/design_default_color_surface"
+        style="@style/Widget.MaterialComponents.TabLayout"
+        app:tabTextColor="@color/tab_navigation"
+        app:tabIconTint="@color/tab_navigation"
+
+        android:layout_below="@id/expense_divider">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:text="@string/add_income"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:icon="@drawable/ic_money_off_black_24dp"
+            android:text="@string/add_expenditure"/>
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/expense_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/expense_manager_tabs">
+
+    </androidx.viewpager.widget.ViewPager>
+</RelativeLayout>

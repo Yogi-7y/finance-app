@@ -1,10 +1,12 @@
-package com.yogi.financeapp;
+package com.yogi.financeapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.yogi.financeapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

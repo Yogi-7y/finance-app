@@ -1,19 +1,26 @@
-package com.yogi.financeapp;
+package com.yogi.financeapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.yogi.financeapp.Fragments.TrackExpenseFragment;
+import com.yogi.financeapp.Fragments.AllExpensesFragment;
+import com.yogi.financeapp.Fragments.BlogsFragment;
+import com.yogi.financeapp.Fragments.GraphFragment;
+import com.yogi.financeapp.Fragments.ToolsFragment;
+import com.yogi.financeapp.R;
 
 public class HomeActivity extends AppCompatActivity {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +53,14 @@ public class HomeActivity extends AppCompatActivity {
                             break;
                         case R.id.track_expense:
 //                            toolbar.setTitle("Track Expenses");
-                            fragment = new AddExpensesFragment();
+                            fragment = new TrackExpenseFragment();
                             break;
                         case R.id.blogs:
 //                            toolbar.setTitle("Blogs");
                             fragment = new BlogsFragment();
+//                            intent = new Intent(HomeActivity.this, TestActivity.class);
+//                            startActivity(intent);
+
                             break;
                         case R.id.expenses_list:
 //                            toolbar.setTitle("All Expenses");
@@ -59,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     }
 
+                    assert fragment != null;
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
                     return true;
 

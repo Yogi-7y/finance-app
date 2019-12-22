@@ -1,4 +1,4 @@
-package com.yogi.financeapp;
+package com.yogi.financeapp.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class AllExpensesFragment extends Fragment {
+import com.yogi.financeapp.R;
+
+public class GraphFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_all_expenses, container, false);
+        return inflater.inflate(R.layout.fragment_graph, container, false);
     }
 }

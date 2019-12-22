@@ -5,4 +5,9 @@
     <string name="expenses">Expenses</string>
     <string name="blogs">Blogs</string>
     <string name="all_expenses">All Expenses</string>
+    <string name="mid_dot">·</string>
+    <string name="financial_blogs">Your Daily Feeds</string>
+    <string name="expense_manager">Expense Manager</string>
+    <string name="add_income">Add Income</string>
+    <string name="add_expenditure">Add Expenditure</string>
 </resources>
