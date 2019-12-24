@@ -27,6 +27,7 @@
             android:fontFamily="@font/roboto_regular"
             android:paddingRight="8dp"
             android:textSize="20sp"
+            android:ellipsize="end"
             tools:text="Psychologist Explain How To Stop Overthinking Everything" />
 
         <TextView

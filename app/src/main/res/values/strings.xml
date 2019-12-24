@@ -10,4 +10,5 @@
     <string name="expense_manager">Expense Manager</string>
     <string name="add_income">Add Income</string>
     <string name="add_expenditure">Add Expenditure</string>
+<!--    <string name="all_expenses">All Expenses</string>-->
 </resources>

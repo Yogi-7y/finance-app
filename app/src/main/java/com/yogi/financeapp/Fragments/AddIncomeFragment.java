@@ -45,5 +45,11 @@ public class AddIncomeFragment extends Fragment {
         return view;
     }
 
+    private void saveExpense() {
+        String expenseType = "Income";
+        String description = descriptionTextInputLayout.getEditText().getText().toString().trim();
+        
+    }
+
 
 }
