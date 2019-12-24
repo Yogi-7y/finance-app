@@ -24,6 +24,6 @@ public interface ExpenseDao {
     @Query("DELETE FROM expense_table")
     void deleteAll();
 
-    @Query("SELECT * FROM expense_table")
+    @Query("SELECT * FROM expense_table ORDER BY date DESC")
     LiveData<List<ExpenseEntity>> getAllEntities();
 }

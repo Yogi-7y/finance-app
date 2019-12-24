@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.Date;
 
-@Database(entities = ExpenseEntity.class, version = 1)
+@Database(entities = ExpenseEntity.class, version = 3, exportSchema = false)
 public abstract class ExpenseDatabase extends RoomDatabase {
 
     public static ExpenseDatabase expenseDatabaseInstance;
@@ -55,7 +55,7 @@ public abstract class ExpenseDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            expenseDao.insert(new ExpenseEntity(400, "no idea", "desc", "income"));
+            expenseDao.insert(new ExpenseEntity(400, "no idea", "desc", new Date(), "income"));
             return null;
         }
     }

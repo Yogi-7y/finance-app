@@ -15,16 +15,16 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/amountTextInputLayout"
+                android:id="@+id/income_amount_text_input_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 app:boxStrokeColor="@color/blue"
+                app:errorEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="35dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/amountTextInputEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="14"
@@ -55,7 +55,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/dateTextView"
+                        android:id="@+id/income_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="25dp"
@@ -85,7 +85,7 @@
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/categorySpinner"
+                        android:id="@+id/income_category"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="23dp"
@@ -99,16 +99,19 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/descriptionTextInputLayout"
+                android:id="@+id/income_description_text_input_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 app:boxStrokeColor="@color/blue"
+                app:errorEnabled="true"
+                app:counterTextAppearance="@font/roboto_light"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="15dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/descriptionTextInputEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="14"
@@ -117,7 +120,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/income_save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_marginTop="12dp"
+                android:text="@string/save" />
         </LinearLayout>
+
 
     </ScrollView>
 

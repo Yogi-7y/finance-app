@@ -2,6 +2,7 @@ package com.yogi.financeapp.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.yogi.financeapp.Adapter.AllExpenseAdapter;
 import com.yogi.financeapp.Adapter.ExpenseAdapter;
 import com.yogi.financeapp.R;
@@ -29,6 +31,8 @@ public class AllExpensesFragment extends Fragment {
 
     private ExpenseViewModel expenseViewModel;
     private RecyclerView recyclerView;
+    public static final String TAG = AllExpensesFragment.class.getSimpleName();
+    MaterialCardView materialCardView;
 
 
 
@@ -40,6 +44,8 @@ public class AllExpensesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.all_expense_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
+//        materialCardView = view.findViewById(R.id.expense_card_view);
+//        materialCardView.setStrokeColor(getResources().getColor(R.color.blue));
 
         final AllExpenseAdapter allExpenseAdapter = new AllExpenseAdapter();
         recyclerView.setAdapter(allExpenseAdapter);
@@ -53,6 +59,9 @@ public class AllExpensesFragment extends Fragment {
                 allExpenseAdapter.setExpenseEntities(expenseEntities);
             }
         });
+
+
+
 
         return view;
     }
