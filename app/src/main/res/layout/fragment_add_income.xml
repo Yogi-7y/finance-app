@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,7 +52,7 @@
                         android:layout_marginStart="25dp"
                         android:layout_marginTop="15dp"
                         android:padding="4dp"
-                        android:text="Date"
+                        android:text="@string/date"
                         android:textSize="18sp" />
 
                     <TextView
@@ -63,9 +64,20 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="10dp"
                         android:padding="4dp"
-                        android:text="11/09/2017"
+                        android:minWidth="110dp"
                         android:textColor="#000000"
                         android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/income_current_date_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="30dp"
+                        android:textColor="@color/color_link"
+                        android:text="current date?" />
+
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,7 +119,7 @@
                 app:errorEnabled="true"
                 app:counterTextAppearance="@font/roboto_light"
                 app:counterEnabled="true"
-                app:counterMaxLength="100"
+                app:counterMaxLength="60"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginTop="15dp">
 

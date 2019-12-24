@@ -11,5 +11,7 @@
     <string name="add_income">Add Income</string>
     <string name="add_expenditure">Add Expenditure</string>
     <string name="save">Save</string>
+    <string name="date">Date</string>
+    <string name="space">                  </string>
     <!--    <string name="all_expenses">All Expenses</string>-->
 </resources>
