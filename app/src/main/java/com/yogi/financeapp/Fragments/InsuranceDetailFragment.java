@@ -60,4 +60,6 @@ public class InsuranceDetailFragment extends Fragment {
         return view;
     }
 
+
+
 }

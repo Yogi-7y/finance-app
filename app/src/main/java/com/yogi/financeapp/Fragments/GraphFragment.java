@@ -1,6 +1,5 @@
 package com.yogi.financeapp.Fragments;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +14,10 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -26,7 +28,6 @@ import com.yogi.financeapp.RoomDb.ExpenseViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,7 +43,6 @@ public class GraphFragment extends Fragment {
     LineChart lineChart;
     private ExpenseViewModel expenseViewModel;
     ArrayList<Entry> incomeValues, expenseValues;
-    String tenDaysBefore;
     Date dayAfter;
     List<ExpenseEntity> expenseEntityList;
     LineChartView lineChartView;
@@ -58,25 +58,28 @@ public class GraphFragment extends Fragment {
         incomeValues = new ArrayList<>();
         expenseValues = new ArrayList<>();
         expenseViewModel = ViewModelProviders.of(this).get(ExpenseViewModel.class);
-        tenDaysBefore = LocalDate.now().minusDays(7).toString();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -7);
+        Log.d(TAG, "onCreateView: date: " + calendar.getTime().toString());
+        dayAfter = calendar.getTime();
 
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            dayAfter = format.parse(tenDaysBefore);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         expenseEntityList = expenseViewModel.getAllAmount();
 
 
         LineDataSet incomeLineDataSet = new LineDataSet(incomeValues(), "Income Values");
-        incomeLineDataSet.setLineWidth(4f);
-        incomeLineDataSet.setColor(Color.BLUE);
+        incomeLineDataSet.setLineWidth(2f);
+        incomeLineDataSet.setColor(Color.GREEN);
+        incomeLineDataSet.setHighlightEnabled(true);
+        incomeLineDataSet.setCircleRadius(8f);
+
 
         LineDataSet expenseLineDataSet = new LineDataSet(getExpenseValues(), "Expense Values");
-        expenseLineDataSet.setLineWidth(4f);
+        expenseLineDataSet.setLineWidth(2f);
         expenseLineDataSet.setColor(Color.RED);
+        expenseLineDataSet.setHighlightEnabled(true);
+        expenseLineDataSet.setCircleRadius(8f);
+
 
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(incomeLineDataSet);
@@ -85,6 +88,32 @@ public class GraphFragment extends Fragment {
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
+
+        lineChart.setBackgroundColor(Color.WHITE);
+        lineChart.setNoDataText("No Data Available");
+        lineChart.setNoDataTextColor(Color.RED);
+
+//        lineChart.setDrawGridBackground(true);
+        lineChart.setDrawBorders(true);
+        lineChart.setBorderColor(Color.RED);
+
+        Description description = new Description();
+        description.setText("Stats for the last 7 days");
+        description.setTextColor(Color.BLUE);
+        description.setTextSize(14);
+        lineChart.setDescription(description);
+
+
+        lineChart.animateX(2000, Easing.EaseInBounce);
+        lineChart.animateY(2000, Easing.EaseInBack);
+
+        Legend legend = lineChart.getLegend();
+        legend.setFormSize(10f);
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setTextSize(12f);
+        legend.setTextColor(Color.BLACK);
+        legend.setXEntrySpace(5f); // set the space between the legend entries on the x-axis
+        legend.setYEntrySpace(5f);
 
         return view;
 
@@ -101,7 +130,7 @@ public class GraphFragment extends Fragment {
 
 
         for (int i = 0; i < expenseEntityList.size(); i++) {
-
+            Log.d(TAG, "incomeValues: " + expenseEntityList.get(i).getDate().after(dayAfter));
             if (expenseEntityList.get(i).getTransactionType().equals(AddIncomeFragment.CONSTANT_INCOME)
                     && expenseEntityList.get(i).getDate().after(dayAfter)) {
 
@@ -121,7 +150,6 @@ public class GraphFragment extends Fragment {
                         tuesday += expenseEntityList.get(i).getAmount();
                         break;
                     case "WEDNESDAY":
-                        Log.d(TAG, "incomeValues: wed: " + i + ' ' + expenseEntityList.get(i).getAmount());
                         wednesday += expenseEntityList.get(i).getAmount();
                         break;
                     case "THURSDAY":
@@ -139,14 +167,14 @@ public class GraphFragment extends Fragment {
 
             }
 
-            Log.d(TAG, "incomeValues: day after: " + dayAfter);
-            Log.d(TAG, "incomeValues: daysvalues mon " + monday);
-            Log.d(TAG, "incomeValues: daysvalues tue " + tuesday);
-            Log.d(TAG, "incomeValues: daysvalues wed " + wednesday);
-            Log.d(TAG, "incomeValues: daysvalues thurs " + thursday);
-            Log.d(TAG, "incomeValues: daysvalues fri " + friday);
-            Log.d(TAG, "incomeValues: daysvalues sat " + saturday);
-            Log.d(TAG, "incomeValues: daysvalues sun " + sunday);
+//            Log.d(TAG, "incomeValues: day after: " + dayAfter);
+//            Log.d(TAG, "incomeValues: daysvalues mon " + monday);
+//            Log.d(TAG, "incomeValues: daysvalues tue " + tuesday);
+//            Log.d(TAG, "incomeValues: daysvalues wed " + wednesday);
+//            Log.d(TAG, "incomeValues: daysvalues thurs " + thursday);
+//            Log.d(TAG, "incomeValues: daysvalues fri " + friday);
+//            Log.d(TAG, "incomeValues: daysvalues sat " + saturday);
+//            Log.d(TAG, "incomeValues: daysvalues sun " + sunday);
 
         }
 
@@ -190,7 +218,6 @@ public class GraphFragment extends Fragment {
                         tuesday += expenseEntityList.get(i).getAmount();
                         break;
                     case "WEDNESDAY":
-                        Log.d(TAG, "incomeValues: wed: " + i + ' ' + expenseEntityList.get(i).getAmount());
                         wednesday += expenseEntityList.get(i).getAmount();
                         break;
                     case "THURSDAY":
@@ -207,15 +234,15 @@ public class GraphFragment extends Fragment {
                 }
 
             }
-
-            Log.d(TAG, "incomeValues: day after: " + dayAfter);
-            Log.d(TAG, "incomeValues: daysvalues mon " + monday);
-            Log.d(TAG, "incomeValues: daysvalues tue " + tuesday);
-            Log.d(TAG, "incomeValues: daysvalues wed " + wednesday);
-            Log.d(TAG, "incomeValues: daysvalues thurs " + thursday);
-            Log.d(TAG, "incomeValues: daysvalues fri " + friday);
-            Log.d(TAG, "incomeValues: daysvalues sat " + saturday);
-            Log.d(TAG, "incomeValues: daysvalues sun " + sunday);
+//
+//            Log.d(TAG, "incomeValuesValues: day after: " + dayAfter);
+//            Log.d(TAG, "incomeValues: daysvalues mon " + monday);
+//            Log.d(TAG, "incomeValues: daysvalues tue " + tuesday);
+//            Log.d(TAG, "incomeValues: daysvalues wed " + wednesday);
+//            Log.d(TAG, "incomeValues: daysvalues thurs " + thursday);
+//            Log.d(TAG, "incomeValues: daysvalues fri " + friday);
+//            Log.d(TAG, "incomeValues: daysvalues sat " + saturday);
+//            Log.d(TAG, "incomeValues: daysvalues sun " + sunday);
 
 
         }
