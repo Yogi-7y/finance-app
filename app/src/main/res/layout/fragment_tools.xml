@@ -1,11 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="8dp"
+    android:gravity="center">
 
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/main_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginVertical="15dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/maincardview" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/tools" />
+        android:layout_below="@id/main_card_view">
+
+        <RelativeLayout
+            android:id="@+id/cards_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/car_insurance_list"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginVertical="2dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@android:color/darker_gray">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/car_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingHorizontal="16dp"
+                        android:src="@drawable/carbadge" />
+
+                    <TextView
+                        android:id="@+id/car_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/car_image"
+                        android:fontFamily="@font/roboto_regular"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/car_insurance"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/car_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/car_title"
+                        android:layout_marginRight="25dp"
+                        android:layout_toRightOf="@id/car_image"
+                        android:fontFamily="@font/roboto_light"
+                        android:paddingLeft="10dp"
+                        android:text="@string/protect_against_burglary_theft_and_accidental_damage"
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/term_insurance_list"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/car_insurance_list"
+                android:layout_marginVertical="2dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/term_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingHorizontal="16dp"
+                        android:src="@drawable/hearthealth" />
+
+                    <TextView
+                        android:id="@+id/term_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/term_image"
+                        android:fontFamily="@font/roboto_regular"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/term_insurance"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/term_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/term_title"
+                        android:layout_marginRight="25dp"
+                        android:layout_toRightOf="@id/term_image"
+                        android:fontFamily="@font/roboto_light"
+                        android:paddingLeft="10dp"
+                        android:text="@string/critical_illness_accidental_death_benefits_tax_benefits_up_to_1_5l"
+                        android:textSize="14sp" />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/health_insurance_list"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/term_insurance_list"
+                android:layout_marginVertical="2dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/health_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingHorizontal="16dp"
+                        android:src="@drawable/hearthealth" />
+
+                    <TextView
+                        android:id="@+id/health_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/health_image"
+                        android:fontFamily="@font/roboto_regular"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/health_insurance"
+                        android:textColor="@color/blue"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/health_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/health_title"
+                        android:layout_marginRight="25dp"
+                        android:layout_toRightOf="@id/health_image"
+                        android:fontFamily="@font/roboto_light"
+                        android:paddingLeft="10dp"
+                        android:text="@string/with_a_cashless_facility_in_5000_hospitals_stay_tension_free"
+                        android:textSize="14sp" />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/two_wheeler_insurance_list"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/health_insurance_list"
+                android:layout_marginVertical="2dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                >
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/two_wheeler_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingHorizontal="16dp"
+                        android:src="@drawable/motorcycle" />
+
+                    <TextView
+                        android:id="@+id/two_wheeler_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/two_wheeler_image"
+                        android:fontFamily="@font/roboto_regular"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="4dp"
+                        android:text="@string/two_wheeler_insurance"
+                        android:textColor="@color/blue"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/two_wheeler_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/two_wheeler_title"
+                        android:layout_marginRight="25dp"
+                        android:layout_toRightOf="@id/two_wheeler_image"
+                        android:fontFamily="@font/roboto_light"
+                        android:paddingLeft="10dp"
+                        android:text="@string/loss_and_damage_personal_accident_cover"
+                        android:textSize="14sp" />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

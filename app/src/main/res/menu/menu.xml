@@ -8,8 +8,8 @@
 
     <item
         android:id="@+id/tools"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/tools" />
+        android:icon="@drawable/ic_monetization_on_black_24dp"
+        android:title="@string/insurance_plans" />
 
     <item
         android:id="@+id/track_expense"
