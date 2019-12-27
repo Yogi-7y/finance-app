@@ -78,7 +78,7 @@ public class BlogsFragment extends Fragment {
                                 blogList.add(blog);
                             }
 
-                            blogAdapter = new BlogAdapter(getContext(), blogList);
+                            blogAdapter = new BlogAdapter(getContext(), blogList, getFragmentManager());
                             recyclerView.setAdapter(blogAdapter);
                             blogAdapter.notifyDataSetChanged();
                         } else {

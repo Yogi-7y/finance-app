@@ -112,8 +112,8 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
         String description = descriptionTextInputLayout.getEditText().getText().toString().trim();
         String amountDummy = amountTextInputLayout.getEditText().getText().toString().trim();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateToEnter = dateFormat.parse(enteredDate);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date dateToEnter = dateFormat.parse(dateTextView.getText().toString());
 
         if (validateAmount() && validateDescription()) {
             int amount = Integer.parseInt(amountDummy);
@@ -122,8 +122,6 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
                     description,
                     dateToEnter,
                     CONSTANT_INCOME);
-//            Log.d(TAG, "saveExpense: " + new SimpleDateFormat("dd-MM-yyyy").format(currentDate));
-//        Log.d(TAG, "saveExpense: " + ' ' + entity.getDate() + entity.getId() + ' ' + entity.getCategory() + ' ' + entity.getDescription() + ' ' + entity.getAmount() + ' ' + entity.getTransactionType());
             expenseViewModel.insert(entity);
             Toast.makeText(getContext(), "Entry saved", Toast.LENGTH_SHORT).show();
         }
@@ -136,7 +134,7 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
         if (descriptionTextInputLayout.getEditText().getText().toString().trim().isEmpty()) {
             descriptionTextInputLayout.setError("Description can't be empty");
             return false;
-        } else if (descriptionTextInputLayout.getEditText().toString().trim().length() > 60) {
+        } else if (descriptionTextInputLayout.getEditText().getText().toString().trim().length() > 60) {
             descriptionTextInputLayout.setError("Description too long!!");
             return false;
         }
@@ -157,6 +155,7 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dateToBeSet = sdf.format(currentDate);
         dateTextView.setText(dateToBeSet);
+
     }
 
     private void showDatePickerDialog() {
@@ -174,7 +173,8 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        enteredDate = year + "-" + month + "-" + dayOfMonth;
+        int correctMonth = month + 1;
+        enteredDate = dayOfMonth + "-" + correctMonth  + "-" + year;
         dateTextView.setText(enteredDate);
     }
 }

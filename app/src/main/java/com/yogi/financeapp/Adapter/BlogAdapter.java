@@ -10,12 +10,17 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.yogi.financeapp.Fragments.BlogDetailFragment;
+import com.yogi.financeapp.Fragments.BlogsFragment;
 import com.yogi.financeapp.R;
 import com.yogi.financeapp.models.Blog;
 
@@ -25,12 +30,14 @@ import java.util.List;
 public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> implements Filterable {
     private static final String TAG = BlogAdapter.class.getSimpleName();
     private Context context;
+    private FragmentManager fragmentManager;
     private List<Blog> blogList;
     private List<Blog> blogListFull;
 
-    public BlogAdapter(Context context, List<Blog> blogList) {
+    public BlogAdapter(Context context, List<Blog> blogList, FragmentManager fragmentManager) {
         this.context = context;
         this.blogList = blogList;
+        this.fragmentManager = fragmentManager;
         blogListFull = new ArrayList<>(blogList);
     }
 
@@ -66,6 +73,18 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> im
                 .into(holder.imageView);
 
 //        holder.category.setText(blog.getCategory());
+
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BlogDetailFragment blogDetailFragment = BlogDetailFragment.newInstance(blog);
+                fragmentManager.beginTransaction().replace(R.id.frame_container, blogDetailFragment).addToBackStack("BlogFragment").commit();
+                Toast.makeText(context, "Run", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -77,7 +96,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> im
         public TextView title, description, timeStamp, name, category;
         public ImageView imageView;
         String userId, username;
-        LinearLayout parentLayout;
+        RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);

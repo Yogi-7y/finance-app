@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.Date;
 
-@Database(entities = ExpenseEntity.class, version = 3, exportSchema = false)
+@Database(entities = ExpenseEntity.class, version = 10, exportSchema = false)
 public abstract class ExpenseDatabase extends RoomDatabase {
 
     public static ExpenseDatabase expenseDatabaseInstance;

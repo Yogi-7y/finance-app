@@ -119,7 +119,7 @@ public class AddExpenseFragment extends Fragment implements DatePickerDialog.OnD
         String amountDummy = amountTextInputLayout.getEditText().getText().toString().trim();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateToEnter = dateFormat.parse(enteredDate);
+        Date dateToEnter = dateFormat.parse(dateTextView.getText().toString());
 
 
         if (validateAmount() && validateDescription()) {
@@ -129,7 +129,6 @@ public class AddExpenseFragment extends Fragment implements DatePickerDialog.OnD
                     description,
                     dateToEnter,
                     CONSTANT_EXPENSE);
-//        Log.d(TAG, "saveExpense: " + ' ' + entity.getDate() + entity.getId() + ' ' + entity.getCategory() + ' ' + entity.getDescription() + ' ' + entity.getAmount() + ' ' + entity.getTransactionType());
             expenseViewModel.insert(entity);
             Toast.makeText(getContext(), "Entry saved", Toast.LENGTH_SHORT).show();
 
@@ -172,11 +171,12 @@ public class AddExpenseFragment extends Fragment implements DatePickerDialog.OnD
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        enteredDate = year + "-" + month + "-" + dayOfMonth;
+        int correctMonth = month + 1;
+        enteredDate = dayOfMonth + "-" + correctMonth + "-" + year;
         dateTextView.setText(enteredDate);
     }
 
-    @SuppressLint("SimpleDateFormat")
+
     private void setDateToTextView() {
         currentDate = calendar.getTime();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

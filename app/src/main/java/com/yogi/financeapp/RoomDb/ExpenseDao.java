@@ -26,4 +26,13 @@ public interface ExpenseDao {
 
     @Query("SELECT * FROM expense_table ORDER BY date DESC")
     LiveData<List<ExpenseEntity>> getAllEntities();
+
+    @Query("SELECT * FROM expense_table")
+    List<ExpenseEntity> getAllAmount();
+
+//    @Query("SELECT * FROM fare WHERE createdDateDb >=datetime('now', '-30 day')")
+//    @Query("SELECT * FROM expense_table WHERE date >= datetime('now', '-7 day')")
+    @Query("SELECT * FROM expense_table WHERE date >= DATE('now', '-10 day')")
+    LiveData<List<ExpenseEntity>> getDataToDisplay();
+
 }

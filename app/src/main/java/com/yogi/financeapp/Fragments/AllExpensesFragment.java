@@ -57,6 +57,8 @@ public class AllExpensesFragment extends Fragment {
             public void onChanged(List<ExpenseEntity> expenseEntities) {
                 Toast.makeText(getActivity().getApplicationContext(), "On Changed", Toast.LENGTH_SHORT).show();
                 allExpenseAdapter.setExpenseEntities(expenseEntities);
+//                Log.d(TAG, "onChanged: " + expenseEntities.get(0).getDate());
+//                Log.d(TAG, "onChanged: " + expenseEntities.get(0).getTransactionType());
             }
         });
 

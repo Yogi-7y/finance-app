@@ -6,16 +6,19 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ExpenseRepository {
 
     private ExpenseDao expenseDao;
     private LiveData<List<ExpenseEntity>> listLiveData;
+    private LiveData<List<ExpenseEntity>> dataToDisplay;
 
     public ExpenseRepository(Application application) {
         ExpenseDatabase expenseDatabase = ExpenseDatabase.getInstance(application);
         expenseDao = expenseDatabase.expenseDao();
         listLiveData = expenseDao.getAllEntities();
+        dataToDisplay = expenseDao.getDataToDisplay();
     }
 
     public void insert(ExpenseEntity expenseEntity) {
@@ -35,6 +38,15 @@ public class ExpenseRepository {
 
     }
 
+    public LiveData<List<ExpenseEntity>> getDataToDisplay() {
+        return dataToDisplay;
+
+    }
+
+    public List<ExpenseEntity> getAllAmount() throws ExecutionException, InterruptedException {
+        return new GetAmountAsyncTask(expenseDao).execute().get();
+    }
+
     private static class InsertAsyncTask extends AsyncTask<ExpenseEntity, Void, Void> {
         private ExpenseDao expenseDao;
 
@@ -46,6 +58,20 @@ public class ExpenseRepository {
         protected Void doInBackground(ExpenseEntity... expenseEntities) {
             expenseDao.insert(expenseEntities[0]);
             return null;
+        }
+    }
+
+    private static class GetAmountAsyncTask extends AsyncTask<Void, Void, List<ExpenseEntity>> {
+
+        private ExpenseDao expenseDao;
+
+        private GetAmountAsyncTask(ExpenseDao expenseDao) {
+            this.expenseDao = expenseDao;
+        }
+
+        @Override
+        protected List<ExpenseEntity> doInBackground(Void... voids) {
+            return expenseDao.getAllAmount();
         }
     }
 }
