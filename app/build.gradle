@@ -65,6 +65,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'com.github.jakebonk:NotifyMe:1.0.1'
+
     implementation "com.android.support:support-v4:+"
     implementation 'com.squareup.picasso:picasso:2.4.0'
     implementation 'com.nineoldandroids:library:2.4.0'

@@ -50,7 +50,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="8dp">
 
             <TextView
@@ -60,6 +60,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 android:textSize="26sp"
+                android:layout_marginHorizontal="16dp"
                 tools:text="Android Development Learning Path in 2019" />
 
             <TextView
@@ -70,6 +71,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center_vertical"
                 android:textSize="16sp"
+                android:layout_marginLeft="16dp"
                 tools:text="Amit Shekhar" />
 
 
@@ -100,20 +102,54 @@
                 android:layout_height="200dp"
                 android:layout_below="@id/blog_detail_username_text_view"
                 android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="16dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/addblog" />
 
 
-            <TextView
-                android:id="@+id/blog_detail_description_text_view"
+            <LinearLayout
+                android:layout_below="@id/blog_detail_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/blog_detail_image_view"
-                android:layout_marginVertical="8dp"
-                android:lineSpacingExtra="8dp"
-                android:textScaleX="1.5"
-                android:fontFamily="@font/roboto_regular"
-                android:textSize="14sp" />
+                android:paddingTop="10dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/left_para"
+                    android:layout_width="0dp"
+                    android:layout_weight="0"
+                    android:layout_height="match_parent"
+                    android:alpha="0.8"
+                    android:elevation="10dp"
+                    android:background="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/blog_detail_description_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:lineSpacingExtra="8dp"
+                    android:layout_weight="15"
+                    android:layout_marginHorizontal="16dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/right_para"
+                    android:layout_width="0dp"
+                    android:layout_weight="0"
+                    android:layout_height="match_parent"
+                    android:alpha="0.3"
+                    android:elevation="10dp"
+                    android:background="@android:color/black" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
 
 
         </RelativeLayout>

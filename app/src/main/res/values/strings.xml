@@ -12,14 +12,14 @@
     <string name="add_expenditure">Add Expenditure</string>
     <string name="save">Save</string>
     <string name="date">Date</string>
-    <string name="insurance_plans">Insurance Plans</string>
+    <string name="insurance_plans">Insure</string>
     <string name="health_insurance">Health Insurance</string>
     <string name="with_a_cashless_facility_in_5000_hospitals_stay_tension_free">With a cashless facility in 5000+ hospitals, stay tension free.</string>
     <string name="two_wheeler_insurance">Two Wheeler Insurance</string>
     <string name="loss_and_damage_personal_accident_cover">Loss and Damage, Personal accident cover</string>
     <string name="car_insurance">Car Insurance</string>
     <string name="protect_against_burglary_theft_and_accidental_damage">Protect against burglary, theft and accidental damage.</string>
-    <string name="term_insurance">Term Insurance</string>
+    <string name="term_insurance">Life Insurance</string>
     <string name="critical_illness_accidental_death_benefits_tax_benefits_up_to_1_5l">Critical Illness, Accidental death benefits, Tax benefits up to 1.5L</string>
     <!--    <string name="all_expenses">All Expenses</string>-->
 </resources>
