@@ -35,7 +35,6 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 images = new int[]{R.drawable.car_insurance_one, R.drawable.car_insurance_two, R.drawable.car_insurance_three};
-                Toast.makeText(getContext(), "Car Insurance", Toast.LENGTH_SHORT).show();
                 InsuranceDetailFragment insuranceDetailFragment = InsuranceDetailFragment.newInstance(images, "Car Insurance");
 
                 getFragmentManager().beginTransaction().replace(R.id.frame_container, insuranceDetailFragment).commit();
@@ -51,7 +50,6 @@ public class ToolsFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.frame_container, insuranceDetailFragment).commit();
 
 
-                Toast.makeText(getContext(), "Term", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,7 +61,7 @@ public class ToolsFragment extends Fragment {
                 InsuranceDetailFragment insuranceDetailFragment = InsuranceDetailFragment.newInstance(images, "Health Insurance");
 
                 getFragmentManager().beginTransaction().replace(R.id.frame_container, insuranceDetailFragment).commit();
-                Toast.makeText(getContext(), "Health", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -74,7 +72,6 @@ public class ToolsFragment extends Fragment {
                 InsuranceDetailFragment insuranceDetailFragment = InsuranceDetailFragment.newInstance(images, "Two-Wheeler Insurance");
 
                 getFragmentManager().beginTransaction().replace(R.id.frame_container, insuranceDetailFragment).commit();
-                Toast.makeText(getContext(), "Two wheeler", Toast.LENGTH_SHORT).show();
             }
         });
 

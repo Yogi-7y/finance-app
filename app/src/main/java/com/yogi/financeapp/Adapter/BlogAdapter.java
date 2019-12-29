@@ -80,7 +80,6 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> im
             public void onClick(View v) {
                 BlogDetailFragment blogDetailFragment = BlogDetailFragment.newInstance(blog);
                 fragmentManager.beginTransaction().replace(R.id.frame_container, blogDetailFragment).addToBackStack("BlogFragment").commit();
-                Toast.makeText(context, "Run", Toast.LENGTH_SHORT).show();
             }
         });
 

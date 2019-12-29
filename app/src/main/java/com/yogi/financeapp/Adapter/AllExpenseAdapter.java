@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,11 +36,9 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
     private List<ExpenseEntity> entities;
     private List<ExpenseEntity> expenseEntities = new ArrayList<>();
 
-//    public AllExpenseAdapter(Context context, List<ExpenseEntity> entities) {
-//        this.context = context;
-//        this.entities = entities;
-//        expenseEntities = new ArrayList<>(entities);
-//    }
+    public AllExpenseAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -73,6 +73,13 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
         String amount = entity.getAmount() + "";
         holder.amountTextView.setText(amount);
         holder.categoryTextView.setText(entity.getCategory());
+        
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "delete this item out of existence bitch", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -86,6 +93,23 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
         notifyDataSetChanged();
     }
 
+    public void deleteItem(int position) {
+        ExpenseEntity recentlyDeletedItem = expenseEntities.get(position);
+        int recentlyDeletedItemPosiiton = position;
+        expenseEntities.remove(position);
+        notifyItemRemoved(position);
+        showUndoSnackBar();
+    }
+
+    private void showUndoSnackBar() {
+        Toast.makeText(context, "Undo Snackbar", Toast.LENGTH_SHORT).show();
+    }
+
+    public ExpenseEntity getExpenseEntityAt(int position) {
+        return expenseEntities.get(position);
+
+    }
+
     class AllExpenseViewHolder extends RecyclerView.ViewHolder {
 
         private TextView expenseTypeTextView;
@@ -94,6 +118,7 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
         private TextView dateTextView;
         private TextView categoryTextView;
         private MaterialCardView materialCardView;
+        private ImageButton deleteButton;
 
         public AllExpenseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,6 +129,7 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
             dateTextView = itemView.findViewById(R.id.expense_date_item);
             categoryTextView= itemView.findViewById(R.id.category_expense_item);
             materialCardView = itemView.findViewById(R.id.expense_card_view);
+            deleteButton = itemView.findViewById(R.id.delete_button);
         }
     }
 }

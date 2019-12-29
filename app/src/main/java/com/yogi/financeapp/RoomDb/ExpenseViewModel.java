@@ -29,6 +29,10 @@ public class ExpenseViewModel extends AndroidViewModel {
         expenseRepository.insert(expenseEntity);
     }
 
+    public void delete(ExpenseEntity expenseEntity) {
+        expenseRepository.delete(expenseEntity);
+    }
+
     public LiveData<List<ExpenseEntity>> getListLiveData() {
         return listLiveData;
     }

@@ -5,8 +5,10 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     public static final String TAG = HomeActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
     Intent intent;
+    boolean doubleBackToExitPressedOnce = false;
 
 
 
@@ -41,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
 
 //        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 14);
-        calendar.set(Calendar.MINUTE, 33);
+        calendar.set(Calendar.HOUR_OF_DAY, 21);
+        calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
 //
 //        Intent intent = new Intent("DISPLAY_NOTIFICATION");
@@ -65,6 +68,9 @@ public class HomeActivity extends AppCompatActivity {
         if (alarmManager != null) {
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         }
+
+        Fragment fragment = new GraphFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
 
 
     }
@@ -113,13 +119,27 @@ public class HomeActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         int count = getSupportFragmentManager().getBackStackEntryCount();
-
-        if (count == 0) {
+        if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
-            //additional code
-        } else {
-            getSupportFragmentManager().popBackStack();
+            return;
         }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+//        if (count == 0) {
+//            super.onBackPressed();
+//            //additional code
+//        } else {
+//            getSupportFragmentManager().popBackStack();
+//        }
 
     }
 

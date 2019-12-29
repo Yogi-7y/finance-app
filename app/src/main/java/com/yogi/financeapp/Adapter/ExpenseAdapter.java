@@ -14,10 +14,6 @@ public class ExpenseAdapter extends FragmentPagerAdapter {
     private final List<Fragment> FragmentList = new ArrayList<>();
     private final List<String> FragmentTitleList = new ArrayList<>();
 
-//    public ExpenseAdapter(@NonNull FragmentManager fm) {
-//        super(fm);
-//    }
-
 
     public ExpenseAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
