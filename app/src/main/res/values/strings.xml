@@ -3,8 +3,8 @@
     <string name="graph">Graph</string>
     <string name="tools">Tools</string>
     <string name="expenses">Expenses</string>
-    <string name="blogs">Blogs</string>
-    <string name="all_expenses">All Expenses</string>
+    <string name="blogs">Learn</string>
+    <string name="all_expenses">All Transactions</string>
     <string name="mid_dot">·</string>
     <string name="financial_blogs">Your Daily Feeds</string>
     <string name="expense_manager">Expense Manager</string>
@@ -23,5 +23,8 @@
     <string name="critical_illness_accidental_death_benefits_tax_benefits_up_to_1_5l">Critical Illness, Accidental death benefits, Tax benefits up to 1.5L</string>
     <string name="get_quote">Get Quote</string>
     <string name="undo">Undo</string>
+    <string name="to_enjoy_the_fruit_of_financial_freedom_one_has_to_learn_and_work_for_it">To enjoy the fruit of financial freedom, one has to learn and work for it.</string>
+    <string name="transactions">Transactions</string>
+    <string name="dashboard">Dashboard</string>
     <!--    <string name="all_expenses">All Expenses</string>-->
 </resources>

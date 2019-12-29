@@ -74,12 +74,6 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
         holder.amountTextView.setText(amount);
         holder.categoryTextView.setText(entity.getCategory());
         
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "delete this item out of existence bitch", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -118,7 +112,7 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
         private TextView dateTextView;
         private TextView categoryTextView;
         private MaterialCardView materialCardView;
-        private ImageButton deleteButton;
+//        private ImageButton deleteButton;
 
         public AllExpenseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -129,7 +123,7 @@ public class AllExpenseAdapter extends RecyclerView .Adapter<AllExpenseAdapter.A
             dateTextView = itemView.findViewById(R.id.expense_date_item);
             categoryTextView= itemView.findViewById(R.id.category_expense_item);
             materialCardView = itemView.findViewById(R.id.expense_card_view);
-            deleteButton = itemView.findViewById(R.id.delete_button);
+//            deleteButton = itemView.findViewById(R.id.delete_button);
         }
     }
 }

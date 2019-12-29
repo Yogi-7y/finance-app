@@ -124,6 +124,11 @@ public class AddIncomeFragment extends Fragment implements DatePickerDialog.OnDa
                     CONSTANT_INCOME);
             expenseViewModel.insert(entity);
             Toast.makeText(getContext(), "Entry saved", Toast.LENGTH_SHORT).show();
+
+
+            amountTextInputLayout.getEditText().setText("");
+            descriptionTextInputLayout.getEditText().setText("");
+            setDateToTextView();
         }
 
 
